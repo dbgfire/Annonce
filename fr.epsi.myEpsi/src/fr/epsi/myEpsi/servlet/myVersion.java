@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class myVersionServlet
+ * Servlet implementation class myVersion
  */
-@WebServlet("/myVersionServlet")
-public class myVersionServlet extends HttpServlet {
+@WebServlet("/myVersion")
+public class myVersion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public myVersionServlet() {
+    public myVersion() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,5 +29,9 @@ public class myVersionServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.getRequestDispatcher("myVersion.jsp").forward(request, response);
 	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 
 }

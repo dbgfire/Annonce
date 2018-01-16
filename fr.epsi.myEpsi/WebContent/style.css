@@ -1,0 +1,35 @@
+html, body {
+	height: 100%;
+}
+body {
+	background: url('img/background.jpg') no-repeat fixed center;
+	background-size: cover;
+}
+div {
+	margin: 50vh auto 0;
+	transform:translateY(-50%);
+	height: 50vh;
+	width: 50vh;
+}
+h1 {
+	
+	padding: 10vh auto 0;
+	font-family: 'Sedgwick Ave Display', cursive;
+	text-align: center;
+	font-size: 3em;
+}
+.button {
+	height: 10vh;
+	width: 100%;
+	text-align: center;
+	background: white;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	color: red;
+	font-size: 2em;
+}
+.button:hover {
+	transform: scale(10);
+	transition: all 0.25s;
+}

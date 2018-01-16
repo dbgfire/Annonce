@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Version du serveur <%=Constantes.version %></h1>
+	<h1>Votre super version est <%=Constantes.version %></h1>
+	<img src="D:\Commun\Downloads\smiley.png" />
 </body>
 </html>

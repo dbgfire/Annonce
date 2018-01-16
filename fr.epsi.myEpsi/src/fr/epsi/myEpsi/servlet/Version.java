@@ -10,20 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import fr.epsi.myEpsi.Constantes;
 
 /**
- * Servlet implementation class VersionServelets
+ * Servlet implementation class Version
  */
 @WebServlet("/Version")
-public class VersionServelets extends HttpServlet {
-	
-	private static final long serialVersionUID = 1L;
-	
-       
+public class Version extends HttpServlet {
+	private static final long serialVersionUID = 1L;   
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VersionServelets() {
+    public Version() {
         super();
-        
         // TODO Auto-generated constructor stub
     }
 
@@ -32,8 +28,11 @@ public class VersionServelets extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		response.getWriter().append("Version du serveur "+ Constantes.version);
+		response.getWriter().append("La  version est " + Constantes.version);
 	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 
 }
