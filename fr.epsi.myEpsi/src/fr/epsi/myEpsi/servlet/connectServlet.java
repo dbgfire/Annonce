@@ -14,13 +14,13 @@ import fr.epsi.myEpsi.beans.Utilisateur;
  * Servlet implementation class ConnectServlet
  */
 @WebServlet("/ConnectServlet")
-public class ConnectServlet extends HttpServlet {
+public class connectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ConnectServlet() {
+    public connectServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
