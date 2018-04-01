@@ -12,7 +12,8 @@
 </head>
 <body>
 	<% Utilisateur utilisateur = (Utilisateur) session.getAttribute(Constantes.PARAM_UTILISATEUR); %>
-	<h1>Coucou</h1>
-	<img src="D:\Commun\Downloads\smiley.png" />
+	<h1>Bonjour <%=utilisateur.getNom() %>	</h1>
+	<p>Bienvenue sur notre site de petites annonces :</p>
+
 </body>
 </html>
