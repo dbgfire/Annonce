@@ -2,19 +2,25 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>myEpsi</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Sedgwick+Ave+Display|Oswald" rel="stylesheet"> 
+	<title>Boutique de cafeti&egrave;re</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link href="https://fonts.googleapis.com/css?family=Oleo+Script|Poppins|Raleway" rel="stylesheet" />
 </head>
 <body>
+	<div id="blurBackground"></div>
 	<header>
-		<img src="img/logo.jpg" id="logo" alt="" />
-		<h1 class="title">Site de E-Commerce</h1>
+		<h1>Coff'E'shop</h1>
+		<h2><span>Bienvenu</span>e</h2>
 	</header>
-	<p class="description">Coucou<br/>Voila une boutique en ligne qui est vraiment trop bien avec plein de truc c'est super vraiment bien. C'est vraiment genial en plus ce n'est pas une arnaque c'est cool tu peux faire plein de chose enfin juste acheter mais bon c'est deja ca</p>
-	<div class="tabs">	
-		<a href="inscription.jsp"><div>Inscription</div></a>
-		<a href="connexion.jsp"><div>Connexion</div></a>
+	<p id="textWelcome">Bonjour &agrave; vous,<br /><br />C'est un plaisir de vous accueillir ici. Notre site vous proposes une s&eacute;lection des meilleures cafeti&egrave;res de la terre.</p>
+	<section id="buttons">	
+		<button id="subscribe">Inscription</button>
+		<button id="login">Connexion</button>
+	</section>
+	<div id="content">
+		<img src="img/exit.png" alt="exit cross" onclick="closeContent()" />
+		<h3></h3>
 	</div>
+	<script src="main.js"></script>
 </body>
 </html>
