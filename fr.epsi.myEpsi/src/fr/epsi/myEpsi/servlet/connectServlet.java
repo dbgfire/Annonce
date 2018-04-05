@@ -65,7 +65,7 @@ public class connectServlet extends HttpServlet {
 		} catch (ClassNotFoundException | SQLException e) {
 			logger.error("Connexion impossible "+e.getMessage());
 		}
-		if(id.isEmpty() || pwd.isEmpty()|| utilisateur.getId().isEmpty()) {
+		if(id.isEmpty() || pwd.isEmpty()) {
 			request.getRequestDispatcher("connexion.jsp").forward(request, response);
 		} else {
 			System.out.println("Connecter en tant que "+utilisateur.getId()+", vous etez "+utilisateur.getNom());
