@@ -1,10 +1,7 @@
 package fr.epsi.myEpsi.listeners;
 
 import java.lang.management.ManagementFactory;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.management.InstanceAlreadyExistsException;
@@ -13,6 +10,7 @@ import javax.management.MBeanServer;
 import javax.management.MalformedObjectNameException;
 import javax.management.NotCompliantMBeanException;
 import javax.management.ObjectName;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -21,6 +19,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import fr.epsi.myEpsi.MBean.Premier;
+import fr.epsi.myEpsi.dao.DAOConfigurationException;
+import fr.epsi.myEpsi.dao.DAOFactory;
 
 
 
@@ -34,13 +34,13 @@ public class StartupListener implements ServletContextListener {
 	private static final Logger logger = LogManager.getLogger(StartupListener.class);
 	 Statement stmt = null;
      ResultSet result = null;
-	
+     private static final String ATT_DAO_FACTORY = "daofactory";
+     private DAOFactory daoFactory;
+     
     /**
      * Default constructor. 
      */
     public StartupListener() {
-    	
-
     }
 
 	/**
@@ -53,10 +53,20 @@ public class StartupListener implements ServletContextListener {
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
     public void contextInitialized(ServletContextEvent event)  { 
-    	logger.error("D�marrage de l'application");
-    	try {
+    	logger.error("Démarrage de l'application");
+        /* Récupération du ServletContext lors du chargement de l'application */
+        ServletContext servletContext = event.getServletContext();
+        /* Instanciation de notre DAOFactory */
+        try {
+			this.daoFactory = DAOFactory.getInstance();
+		} catch (DAOConfigurationException e1) {
+			e1.printStackTrace();
+		}
+        /* Enregistrement dans un attribut ayant pour portée toute l'application */
+        servletContext.setAttribute( ATT_DAO_FACTORY, this.daoFactory );
+    	/*try {
 			Class.forName("org.hsqldb.jdbcDriver");
-			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost:9003", "SA", "");
+			Connection con = DriverManager.getConnection("	", "SA", "");
 			 if (con!= null)
 		            System.out.println("Connection created successfully");
 			 stmt = con.createStatement();
@@ -69,13 +79,13 @@ public class StartupListener implements ServletContextListener {
 			//con.close();
 		} catch (ClassNotFoundException | SQLException e) {
 			logger.error("Connexion impossible "+e.getMessage());
-		}
+		}*/
     	
     	MBeanServer mbs =ManagementFactory.getPlatformMBeanServer();
     	ObjectName name = null;
 
     	try {
-    	    name = new ObjectName("�fr.epsi.jmx:type=PremierMBean");
+    	    name = new ObjectName("fr.epsi.jmx:type=PremierMBean");
     	    Premier mbean = new Premier();
 
     	    mbs.registerMBean(mbean, name);
