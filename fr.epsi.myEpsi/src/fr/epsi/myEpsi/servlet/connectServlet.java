@@ -40,10 +40,11 @@ public class connectServlet extends HttpServlet {
     	request.getRequestDispatcher("connexion.jsp").forward(request, response);
     }
      	
-	@SuppressWarnings("null")
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("email");
 		String pwd = request.getParameter("motdepasse");
+
 		
 		Utilisateur utilisateur =new Utilisateur() ;
 		utilisateur.setId(id);
@@ -51,6 +52,7 @@ public class connectServlet extends HttpServlet {
 		 
 
 		if(id.isEmpty() || pwd.isEmpty()/*|| !utilisateurDao.check(user)*/){
+
 			request.getRequestDispatcher("connexion.jsp").forward(request, response);
 		} else {
 			

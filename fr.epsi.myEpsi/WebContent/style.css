@@ -1,83 +1,139 @@
+@charset "utf-8";
+
 body {
 	margin: 0;
-	width: 100%;
-	background: url('img/background.jpg') no-repeat fixed center;
+	background-image: url('img/background.jpg');
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
 	background-size: cover;
 }
-header {
-	text-align: center;
-}
-#logo {
-	margin-top: 5vh;
-	height: 10vw;
-	width: 10vw;
-	border-radius: 50%;
-	box-shadow: 0 0 1vw black;
-	transition: all 0.5s;
-}
-#logo:hover {
-	transform: rotate(360deg);
-	transition: all 1s;
-}
-#connect{
-	text-align: center;
-
-}
-.title {
-	margin: 0;
-	padding: 1em;
-	color: white;
-	font-family: 'Sedgwick Ave Display', cursive;
-	font-size: 2em;
-	font-weight: 800;
-	letter-spacing: 0.2em;
-	text-transform: uppercase;
-	text-shadow: 0.1em 0.1em 0.1em black;
-}
-.description {
-	width: 57.5%;
-	margin: auto;
-	padding-top: 1.5em;
-	line-height: 2;
-	color: black;
-	font-family: 'Roboto Condensed', sans-serif;
-	font-size: 1.25em;
-	letter-spacing: 0.1em;
-	text-align: center;
-}
-.tabs {
-	padding-top: 3em;
+/*-----Blur background-----*/
+#blurBackground {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
 	width: 100%;
-	display: flex;
-	justify-content: center;
-}
-.tabs div {
-	width: 15vw;
-	height: 10vh;
-	line-height: 10vh;
-	margin: 0 2vw;
-	border: solid 2px black;
-	border-radius: 15px;
-}
-.tabs a {
-	display: block;
-	color: black;
-	font-family: 'Oswald', sans-serif;
-	font-size: 1.25em;
-	font-weight: 400;
-	letter-spacing: 0.2em;
-	text-align: center;
-	text-decoration: none;
-}
-.tabs div:hover {
-	background: black;
-	color: white;
+	background-image: url('img/blurBackground.jpg');
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	z-index: -1;
+	opacity: 0;
 	transition: all 0.25s;
 }
+/*-----Header-----*/
+header {
+	padding: 2em 0;
+	background: linear-gradient(to bottom, rgba(225, 206, 154, 0.6), rgba(207, 177, 95, 0.6));
+	box-shadow: 0 0 2vw black;
+	text-align: center;
+}
+header * {
+	margin: 0;
+}
+header h1 {
+	color: #462E01;
+	font-family: 'Oleo Script', cursive;
+	font-size: 4em;
+	font-weight: 200;
+	text-shadow: 0 0.25vh 0.5vh black;
+}
+header h2 {
+	color: #462E01;
+	font-family: 'Poppins', sans-serif;
+	font-size: 1.5em;
+	text-transform: uppercase;
+	text-shadow: 0 0.25vh 0.25vh rgba(0, 0, 0, 0.5);
+}
+header h2 span {
+	letter-spacing: 1vw;
+}
+/*-----Text presentation-----*/
+#textWelcome {
+	margin: 7.5vh auto;
+	padding: 2em;
+	width: 60%;
+	line-height: 1.5;
+	background: linear-gradient(to bottom, rgba(225, 206, 154, 0.6), rgba(207, 177, 95, 0.6));
+	border-radius: 3vw;
+	box-shadow: 0 0 2vw black;
+	color: #462E01;
+	font-family: 'Raleway', sans-serif;
+	font-size: 1.75em;
+	font-weight: 800;
+	letter-spacing: 0.5em;
+	text-align: center;
+	text-transform: uppercase;
+}
+/*-----Buttons------*/
+#buttons {
+	padding: 2vh 0 10vh;
+	width: 100%;
+	text-align: center;
+}
+#buttons button {
+	margin: 0 5vw;
+	padding: 1.5em 0;
+	width: 15vw;
+	height: 10vh;
+	background: linear-gradient(to bottom, #E1CE9A, #CFB15F);
+	border: none;
+	border-radius: 3vw;
+	box-shadow: 0 0 1vw black;
+	color: #462E01;
+	font-family: 'Raleway', sans-serif;
+	font-size: 1.5em;
+	font-weight: 400;
+	text-align: center;
+	text-transform: uppercase;
+	transition: all 0.2s;
+	user-select: none;
+	cursor: pointer;
+}
+#buttons button:hover {
+	box-shadow: 0 0 2vw black;
+	transition: all 0.5s;
+	transform: scale(1.05);
+}
+/*-----Forms-----*/
+#content {
+	z-index: -1;
+	position: absolute;
+	top: 50%; left: 50%;
+	height: 0;
+	width: 45vw;
+	background: #E1CE9A;
+	border-radius: 3vw;
+	box-shadow: 0 0 2vw black;
+	transform: translateX(-50%) translateY(-50%);
+}
+#content img {
+	position: absolute;
+	top: 3vh;
+	right: 3vh;
+	height: 3vh;
+	width: auto;
+	cursor: pointer;
+}
+#content h3 {
+	margin: 0;
+	padding: 1.5em 0;
+	color: #462E01;
+	font-family: 'Oleo Script', cursive;
+	font-size: 3em;
+	text-align: center;
+}
 
-/*
-font-family: 'Oswald', sans-serif;
-font-family: 'Roboto Condensed', sans-serif;
-font-family: 'Sedgwick Ave Display', cursive;
-font-family: 'Share', cursive;
+/* 		
+		fonts
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Raleway', sans-serif;
+	font-family: 'Oleo Script', cursive;
+		color
+	E1CE9A
+	462E01
+	CFB15F
 */
