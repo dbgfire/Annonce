@@ -12,6 +12,7 @@ public class IUserDaoImpl implements IUserDao {
 	 private static final String SQL_INSERT = "INSERT INTO UTILISATEURS (ID,PASSWORD,ISADMINISTRATOR,NAME) VALUES (?, ?, ?, ?)";
 	 private static final String SQL_SELECT_PAR_EMAIL = "SELECT * FROM UTILISATEURS WHERE id = ?";
 	 private static final String SQL_SELECT_CHECK="SELECT * FROM UTILISATEURS WHERE id= ? AND PASSWORD =?";
+	 private static final String SQL_DELETE_USER="DELETE FROM UTILISATEURS WHERE id=? AND ISADMINISTRATOR<>'true' ";
 	    /*
 	     * Simple méthode utilitaire permettant de faire la correspondance (le
 	     * mapping) entre une ligne issue de la table des utilisateurs (un
@@ -60,8 +61,29 @@ public class IUserDaoImpl implements IUserDao {
 
 	@Override
 	public boolean delete(Utilisateur utilisateur) {
-		// TODO Auto-generated method stub
-		return false;
+		Connection connexion = null;
+	    PreparedStatement preparedStatement = null;
+	    ResultSet valeursAutoGenerees = null;
+	    int statut;
+	    try {
+	        /* Récupération d'une connexion depuis la Factory */
+	        connexion = daoFactory.getConnection();
+	        preparedStatement = DAOUtilitaire.initialisationRequetePreparee( connexion, SQL_DELETE_USER, true, utilisateur.getId(),utilisateur.isAdministrateur());
+	        statut = preparedStatement.executeUpdate();
+	        /* Analyse du statut retourné par la requête d'insertion */
+	        if ( statut == 0 ) {
+	            throw new DAOException( "Échec de la suppression de l'utilisateur, aucune ligne supprimée dans la table." );
+	        }
+	        
+	    } catch ( SQLException e ) {
+	        throw new DAOException( e );
+	    } finally {
+	    	DAOUtilitaire.fermeturesSilencieuses( valeursAutoGenerees, preparedStatement, connexion );
+	    }
+	    if(statut==0) 
+	    	return false;
+	    else 
+	    	return true;
 	}
 
 	@Override
