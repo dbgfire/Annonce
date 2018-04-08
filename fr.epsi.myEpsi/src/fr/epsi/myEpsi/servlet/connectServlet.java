@@ -51,9 +51,9 @@ public class connectServlet extends HttpServlet {
 		utilisateur.setPassword(pwd);
 		 
 
-		if(id.isEmpty() || pwd.isEmpty()/*|| !utilisateurDao.check(user)*/){
+		if(id.isEmpty() || pwd.isEmpty()|| !utilisateurDao.check(utilisateur)){
 
-			request.getRequestDispatcher("connexion.jsp").forward(request, response);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 		} else {
 			
 			request.getSession().setAttribute(Constantes.PARAM_UTILISATEUR, utilisateurDao.get(id));

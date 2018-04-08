@@ -11,6 +11,7 @@ public class IUserDaoImpl implements IUserDao {
 	 DAOFactory daoFactory;
 	 private static final String SQL_INSERT = "INSERT INTO UTILISATEURS (ID,PASSWORD,ISADMINISTRATOR,NAME) VALUES (?, ?, ?, ?)";
 	 private static final String SQL_SELECT_PAR_EMAIL = "SELECT * FROM UTILISATEURS WHERE id = ?";
+	 private static final String SQL_SELECT_CHECK="SELECT * FROM UTILISATEURS WHERE id= ? AND PASSWORD =?";
 	    /*
 	     * Simple méthode utilitaire permettant de faire la correspondance (le
 	     * mapping) entre une ligne issue de la table des utilisateurs (un
@@ -91,8 +92,25 @@ public class IUserDaoImpl implements IUserDao {
 
 	@Override
 	public boolean check(Utilisateur utilisateur) {
-		// TODO Auto-generated method stub
-		return false;
+		Connection connexion = null;
+	    PreparedStatement preparedStatement = null;
+	    ResultSet resultSet = null; 
+	    try {
+	        /* Récupération d'une connexion depuis la Factory */
+	        connexion = daoFactory.getConnection();
+	        preparedStatement = DAOUtilitaire.initialisationRequetePreparee( connexion, SQL_SELECT_CHECK, false, utilisateur.getId(), utilisateur.getPassword());
+	        resultSet = preparedStatement.executeQuery();
+	        if(resultSet.next()) {
+	        	System.out.println("" +resultSet.getString("ID"));
+	         	return true;
+	        } else {
+	    	    return false;
+	        }
+	    } catch ( SQLException e ) {
+	        throw new DAOException( e );
+	    } finally {
+	        DAOUtilitaire.fermeturesSilencieuses( resultSet, preparedStatement, connexion );
+	    }
 	}
 
 }

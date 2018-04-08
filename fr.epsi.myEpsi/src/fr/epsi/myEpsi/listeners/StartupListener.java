@@ -1,9 +1,6 @@
 package fr.epsi.myEpsi.listeners;
 
 import java.lang.management.ManagementFactory;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
 import javax.management.InstanceAlreadyExistsException;
 import javax.management.MBeanRegistrationException;
 import javax.management.MBeanServer;
@@ -32,10 +29,8 @@ import fr.epsi.myEpsi.dao.DAOFactory;
 public class StartupListener implements ServletContextListener {
 
 	private static final Logger logger = LogManager.getLogger(StartupListener.class);
-	 Statement stmt = null;
-     ResultSet result = null;
-     private static final String ATT_DAO_FACTORY = "daofactory";
-     private DAOFactory daoFactory;
+    private static final String ATT_DAO_FACTORY = "daofactory";
+    private DAOFactory daoFactory;
      
     /**
      * Default constructor. 
@@ -57,29 +52,17 @@ public class StartupListener implements ServletContextListener {
         /* Récupération du ServletContext lors du chargement de l'application */
         ServletContext servletContext = event.getServletContext();
         /* Instanciation de notre DAOFactory */
-        try {
+		try {
 			this.daoFactory = DAOFactory.getInstance();
 		} catch (DAOConfigurationException e1) {
+			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			System.err.println(""+e1.getMessage());
 		}
+	
         /* Enregistrement dans un attribut ayant pour portée toute l'application */
         servletContext.setAttribute( ATT_DAO_FACTORY, this.daoFactory );
-    	/*try {
-			Class.forName("org.hsqldb.jdbcDriver");
-			Connection con = DriverManager.getConnection("	", "SA", "");
-			 if (con!= null)
-		            System.out.println("Connection created successfully");
-			 stmt = con.createStatement();
-	         result = stmt.executeQuery(
-	            "SELECT * FROM ANNONCES");
-	         
-	         while(result.next()){
-	            System.out.println(result.getInt("id")+result.getString("TITLE"));
-	         }
-			//con.close();
-		} catch (ClassNotFoundException | SQLException e) {
-			logger.error("Connexion impossible "+e.getMessage());
-		}*/
+    
     	
     	MBeanServer mbs =ManagementFactory.getPlatformMBeanServer();
     	ObjectName name = null;
