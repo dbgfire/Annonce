@@ -2,6 +2,7 @@ body {
   margin: 0;
   height: 100%;
   box-sizing: border-box;
+  overflow: hidden;
 }
 .bg {
   position: absolute;
@@ -58,6 +59,9 @@ body {
 .text-center {
   text-align: center;
 }
+.text-small {
+  font-size: 0.8rem;
+}
 .text-normal {
   font-size: 1rem;
 }
@@ -82,9 +86,64 @@ body {
   box-shadow: 0 0.5rem 1rem #000000;
   outline: none;
   user-select: none;
+  transition: all 0.2s;
+}
+.btn:hover {
+  box-shadow: 0 0.5rem 1.2rem #000000;
+  transition: all 0.2s;
+}
+.back {
+  position: absolute;
+  bottom: 0vh; right: 2vh;
+  height: 5vh;
+  width: 5vh;
+  margin: 2% 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+.back img {
+  width: 100%;
 }
 #btn-lag {
   display: none;
+}
+/* Forms */
+#in-form,
+#up-form {
+  position: absolute;
+  top: 50%; left: 50%;
+  z-index: -2;
+  height: 90%;
+  width: 90%;
+  padding-top: 10%;
+  background: #E0D8CF;
+  border-radius: 2vh;
+  transform: translate(-50%, -25%);
+  opacity: 0;
+  transition: all 0.2s;
+}
+#in-form p,
+#up-form p {
+  width: 95%;
+  margin: 7% auto;
+}
+input {
+  height: 5vh;
+  width: 60%;
+  margin: 2%;
+  border: none;
+  border-radius: 1.5vh;
+  outline: none;
+  transition: all 0.2s;
+}
+input:active,
+input:focus {
+  box-shadow: 0 0 0.2rem 0.1rem #936037;
+  transition: all 0.2s;
+}
+#form-lag {
+  display: block;
 }
 /* Media queries */
 @media (orientation: landscape) {
@@ -105,6 +164,27 @@ body {
     width: 30%;
     margin: 2%;
   }
+  #in-form,
+  #up-form {
+    padding-top: 2%;
+  }
+  #in-form p,
+  #up-form p {
+    width: 95%;
+    margin: 2% auto 5%;
+  }
+  .row {
+    width: 50%;
+    float: left;
+  }
+  .back {
+    right: 5vh;
+    height: 10vh;
+    width: 10vh;
+  }
+  #form-lag {
+    display: none;
+  }
 }
 @media (orientation: landscape) and (min-width: 896px) {
   .text-larger {
@@ -116,10 +196,26 @@ body {
   .logo {
     margin: 10% auto 7%;
   }
+  #in-form,
+  #up-form {
+    padding-top: 7%;
+    box-sizing: border-box;
+  }
+  input {
+    margin: 5%;
+  }
 }
 @media (orientation: landscape) and (min-width: 1440px) {
   .logo {
     margin: 5% auto 2%;
+  }
+  #in-form,
+  #up-form {
+    padding-top: 2%;
+    box-sizing: border-box;
+  }
+  #in-form input {
+    margin: 2%;
   }
 }
 @media (orientation: portrait) and (min-width: 426px) {
