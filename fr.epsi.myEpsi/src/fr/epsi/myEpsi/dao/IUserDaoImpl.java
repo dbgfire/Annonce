@@ -8,11 +8,12 @@ import fr.epsi.myEpsi.beans.Utilisateur;
 import fr.epsi.myEpsi.dao.DAOUtilitaire;
 
 public class IUserDaoImpl implements IUserDao {
+	 
 	 DAOFactory daoFactory;
-	 private static final String SQL_INSERT = "INSERT INTO UTILISATEURS (ID,PASSWORD,ISADMINISTRATOR,NAME) VALUES (?, ?, ?, ?)";
-	 private static final String SQL_SELECT_PAR_EMAIL = "SELECT * FROM UTILISATEURS WHERE id = ?";
-	 private static final String SQL_SELECT_CHECK="SELECT * FROM UTILISATEURS WHERE id= ? AND PASSWORD =?";
-	 private static final String SQL_DELETE_USER="DELETE FROM UTILISATEURS WHERE id=? AND ISADMINISTRATOR<>'true' ";
+	private static final String SQL_INSERT = "INSERT INTO USERS (ID,PASSWORD,ISADMINISTRATOR,NAME) VALUES (?, ?, ?, ?)";
+	 private static final String SQL_SELECT_PAR_EMAIL = "SELECT * FROM USERS WHERE ID = ?";
+	 private static final String SQL_SELECT_CHECK="SELECT * FROM USERS WHERE ID= ? AND PASSWORD =?";
+	 private static final String SQL_DELETE_USER="DELETE FROM USERS WHERE ID=? AND ISADMINISTRATOR<>'true' ";
 	    /*
 	     * Simple méthode utilitaire permettant de faire la correspondance (le
 	     * mapping) entre une ligne issue de la table des utilisateurs (un
@@ -21,8 +22,9 @@ public class IUserDaoImpl implements IUserDao {
 	 private static Utilisateur map( ResultSet resultSet ) throws SQLException {
 	        Utilisateur utilisateur = new Utilisateur();
 	        utilisateur.setId( resultSet.getString( "ID" ) );
-	        utilisateur.setNom( resultSet.getString( "NAME" ) );
+	        utilisateur.setNom( resultSet.getString( "NOM" ) );
 	        utilisateur.setPassword( resultSet.getString( "PASSWORD" ) );
+	        utilisateur.setTelephone(resultSet.getString( "TELEPHONE" ));
 	        utilisateur.setAdministrateur(resultSet.getBoolean( "ISADMINISTRATOR" ) );
 	        return utilisateur;
 	}
@@ -72,11 +74,12 @@ public class IUserDaoImpl implements IUserDao {
 	        statut = preparedStatement.executeUpdate();
 	        /* Analyse du statut retourné par la requête d'insertion */
 	        if ( statut == 0 ) {
-	            throw new DAOException( "Échec de la suppression de l'utilisateur, aucune ligne supprimée dans la table." );
+	            throw new DAOException( "�chec de la suppression de l'utilisateur, aucune ligne supprimée dans la table." );
 	        }
 	        
-	    } catch ( SQLException e ) {
+	    } catch ( SQLException e ) { 
 	        throw new DAOException( e );
+	        
 	    } finally {
 	    	DAOUtilitaire.fermeturesSilencieuses( valeursAutoGenerees, preparedStatement, connexion );
 	    }
@@ -120,12 +123,14 @@ public class IUserDaoImpl implements IUserDao {
 	    try {
 	        /* Récupération d'une connexion depuis la Factory */
 	        connexion = daoFactory.getConnection();
-	        preparedStatement = DAOUtilitaire.initialisationRequetePreparee( connexion, SQL_SELECT_CHECK, false, utilisateur.getId(), utilisateur.getPassword());
+	        preparedStatement = DAOUtilitaire.initialisationRequetePreparee( connexion, SQL_SELECT_CHECK, true, utilisateur.getId(), utilisateur.getPassword());
 	        resultSet = preparedStatement.executeQuery();
-	        if(resultSet.next()) {
-	        	System.out.println("" +resultSet.getString("ID"));
+	        
+	        if(resultSet!=null) {
+	        	
 	         	return true;
 	        } else {
+	        	
 	    	    return false;
 	        }
 	    } catch ( SQLException e ) {
