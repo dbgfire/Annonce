@@ -67,8 +67,8 @@
                      <%= all.get(i).getPrix() %>
                 </td>
               	<td>
-       			<input type="button" id="del" value="Supprimé une annonce"  />
-       			<input type="button" id="update"  value="Modifier une annonce"  />
+       			<input type="button" id="Achater" value="Acheter"  />
+       			
        
             	</td>
                </tr>
