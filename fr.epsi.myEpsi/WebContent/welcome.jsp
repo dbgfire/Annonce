@@ -1,6 +1,10 @@
 <%@page import="fr.epsi.myEpsi.beans.Utilisateur"%>
 <%@page import="fr.epsi.myEpsi.beans.Annonce"%>
 <%@page import="fr.epsi.myEpsi.Constantes"%>
+<%@ page import="java.util.*" %>
+<%@ page import="java.util.List" %>
+<%@page import="javax.servlet.*"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
@@ -12,32 +16,63 @@
 <title>Swag page</title>
 </head>
 <body>
-	<% Utilisateur utilisateur = (Utilisateur) session.getAttribute(Constantes.PARAM_UTILISATEUR); %>
+	<% Utilisateur utilisateur = (Utilisateur) session.getAttribute(Constantes.PARAM_UTILISATEUR); 
+	List<Annonce> attribut = (List<Annonce>)session.getAttribute(Constantes.PARAM_ANNONCE);  
+	List<Annonce> all = (List<Annonce>)session.getAttribute(Constantes.PARAM_ANNONCE_ALL); 
+	System.out.println(all.get(0).getTitre()+" "+attribut.get(0).getTitre());
+	//Annonce a =(Annonce)session.getAttribute(Constantes.PARAM_ANNONCE);
+	//List<Annonce> annonce= (Annonce) session.getAttribute(Constantes.PARAM_ANNONCE);
+
+	%>
 	
 	<h1>Bonjour <%=utilisateur.getNom() %> 	</h1>
 	<p>Bienvenue sur notre site de petites annonces :</p>
+	Vos petites annonces:
+	<input type="button" value="Crée" /><br>
+	Nombre de vos annonces: <%=attribut.size() %>
  <table border="1" cellpadding="40" cellspacing="1">
 <%
-     for(int i=1;i<=10;i++)
-     {
-          %>
+     for(int i=0;i<attribut.size();i++)
+     {  %>
                <tr>
-          <%
-          for(int j=1;j<=5;j++)
-          {
-          %>
                 <td>
-                     <%  %>
+                     <%= attribut.get(i).getTitre() %>
                 </td>
-          <%
-          }
-          %>
+                <td>
+                     <%= attribut.get(i).getPrix() %>
+                </td>
+              	<td>
+       			<input type="button" value="Supprimé une annonce"  />
+       			<input type="button" value="Modifier une annonce"  />
+       
+            	</td>
                </tr>
           <%
      }
 %>
      </table>
-	
+		Nombre d'annonces public: <%=all.size() %>
+ <table border="1" cellpadding="40" cellspacing="1">
+<%
+     for(int i=0;i<all.size();i++)
+     {  %>
+               <tr>
+                <td>
+                     <%= all.get(i).getTitre() %>
+                </td>
+                <td>
+                     <%= all.get(i).getPrix() %>
+                </td>
+              	<td>
+       			<input type="button" value="Supprimé une annonce"  />
+       			<input type="button" value="Modifier une annonce"  />
+       
+            	</td>
+               </tr>
+          <%
+     }
+%>
+     </table>
 
 </body>
 </html>

@@ -77,4 +77,7 @@ public class DAOFactory {
     public IUserDao getUtilisateurDao() {
         return new IUserDaoImpl( this );
     }
+    public IAnnonceDao getAnnonceDao() {
+        return new IAnnonceDaoImpl( this );
+    }
 }
