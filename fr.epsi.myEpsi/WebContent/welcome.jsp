@@ -16,6 +16,7 @@
 <title>Swag page</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
 	<% Utilisateur utilisateur = (Utilisateur) session.getAttribute(Constantes.PARAM_UTILISATEUR); 
 	List<Annonce> attribut = (List<Annonce>)session.getAttribute(Constantes.PARAM_ANNONCE);  
@@ -33,8 +34,10 @@
 	<div id="textWelcome">
 	<p>Bienvenue sur notre site de petites annonces :</p>
 	Vos petites annonces:
-	<input type="button" id="creer" value="Crée" /><br>
+	<input type="button" id="creer" value="Crée"  onclick="javascript:location.href='creer.jsp'"/>
+	<br>
 	Nombre de vos annonces: <%=attribut.size() %> Nombre d'annonces public: <%=all.size() %>
+	
  <table border="1" cellpadding="40" cellspacing="1">
 <%
      for(int i=0;i<attribut.size();i++)
