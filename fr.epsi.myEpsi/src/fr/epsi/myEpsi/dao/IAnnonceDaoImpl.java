@@ -12,13 +12,13 @@ import fr.epsi.myEpsi.beans.Utilisateur;
 
 public class IAnnonceDaoImpl implements IAnnonceDao {
 
-	 DAOFactory daoFactory;
-		private static final String SQL_INSERT = "INSERT INTO ANNONCES (ID,CONTENT,PRIX) VALUES (?, ?,?)";
-		 private static final String SQL_SELECT_PAR_ID = "SELECT * FROM ANNONCES WHERE id = ?";
-		 private static final String SQL_UPDATE="UPDATE ANNONCES SET ID=? CONTENT=? PRIX=? WHERE ID= ? ";
-		 private static final String SQL_DELETE_ANNONCE="DELETE FROM ANNONCES WHERE id=? ";
-		 private static final String SQL_SELECT_LIST_ANNONCE = "SELECT * FROM ANNONCES WHERE USER_ID = ?";
-		 private static final String SQL_SELECT_LIST_ANNONCE_ALL = "SELECT * FROM ANNONCES WHERE STATUS = ? AND USER_ID != ?";
+	DAOFactory daoFactory;
+	private static final String SQL_INSERT = "INSERT INTO ANNONCES (ID,CONTENT,PRIX) VALUES (?, ?,?)";
+	private static final String SQL_SELECT_PAR_ID = "SELECT * FROM ANNONCES WHERE id = ?";
+	private static final String SQL_UPDATE="UPDATE ANNONCES SET ID=? CONTENT=? PRIX=? WHERE ID= ? ";
+	private static final String SQL_DELETE_ANNONCE="DELETE FROM ANNONCES WHERE id=? ";
+	private static final String SQL_SELECT_LIST_ANNONCE = "SELECT * FROM ANNONCES WHERE USER_ID = ?";
+	private static final String SQL_SELECT_LIST_ANNONCE_ALL = "SELECT * FROM ANNONCES WHERE STATUS = ? AND USER_ID != ?";
 		 /*
 		     * Simple méthode utilitaire permettant de faire la correspondance (le
 		     * mapping) entre une ligne issue de la table des Annonce (un
@@ -30,6 +30,7 @@ public class IAnnonceDaoImpl implements IAnnonceDao {
 			 annonce.setTitre(resultSet.getString("TITLE"));
 			 annonce.setDescription(resultSet.getString("CONTENT"));
 			 annonce.setPrix(resultSet.getDouble("PRIX"));
+			 annonce.setStatut(resultSet.getInt("STATUS"));
 		     return annonce;
 		}
 
