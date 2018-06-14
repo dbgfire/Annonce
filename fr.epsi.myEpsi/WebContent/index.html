@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coff'e'Shop - Boutique de cafetières</title>
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Crete+Round|Lato|Lobster" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="container text-center">
+    <div class="logo">
+      <img src="img/logo.svg" alt="Logo">
+    </div>
+    <h1 class="title text-light text-large">Coff'E'Shop</h1>
+    <h2 class="sub-title text-light text-larger">Bienvenue</h2>
+  </div>
+  <div class="container text-center">
+    <button id="sign-in" class="btn text text-light text-normal text-upper">Inscription</button><span id="btn-lag"><br></span>
+    <button id="sign-up" class="btn text text-light text-normal text-upper">Connexion</button>
+  </div>
+  <div id="in-form" class="text-center">
+    <h3 class="title text-larger text-darker text-center">Connectez-vous !</h3>
+    <p class="text text-dark">Vous savez quoi faire, vous pouvez vous connecter !</p>
+    <form method="POST" action="">
+      <label class="text" for="email">Votre email</label><br>
+      <input class="text text-center"type="email" name="email" id="email"><br>
+      <label class="text" for="passwd">Votre mot de passe</label><br>
+      <input class="text text-center"type="password" name="passwd" id="passwd"><br><span id="form-lag"><br></span>
+      <div class="container buttons">
+        <button type="submit" class="btn text text-light text-small text-upper">Go !</button>
+        <button id="close-in" class="back" type="reset"><img src="img/close.png" alt="Close"></button>
+      </div>
+    </form>
+  </div>
+  <div id="up-form" class="text-center">
+    <h3 class="title text-larger text-darker text-center">Incrivez-vous !</h3>
+    <p class="text text-dark">Nous avons besoin de quelques informations chère (cher) amie (ami) !</p>
+    <form method="POST" action="">
+      <div class="row">
+        <label class="text" for="fname">Votre prénom</label><br>
+        <input class="text text-center"type="text" name="fname" id="fname"><br>
+        <label class="text" for="lname">Votre nom</label><br>
+        <input class="text text-center"type="text" name="lname" id="lname"><br>
+      </div>
+      <div class="row">
+        <label class="text" for="email">Un email</label><br>
+        <input class="text text-center"type="email" name="email" id="nemail"><br>
+        <label class="text" for="passwd">Et enfin un mot de passe !</label><br>
+        <input class="text text-center"type="password" name="passwd" id="npasswd"><br><br>
+      </div>
+      <div class="container buttons">
+        <button type="submit" class="btn text text-light text-small text-upper">C'est parti !</button>
+        <button id="close-up" class="back" type="reset"><img src="img/close.png" alt="Close"></button>
+      </div>
+    </form>
+  </div>
+  <script src="scripts/main.js"></script>
+</body>
+</html>
