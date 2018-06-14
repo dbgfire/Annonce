@@ -10,7 +10,7 @@ import fr.epsi.myEpsi.dao.DAOUtilitaire;
 public class IUserDaoImpl implements IUserDao {
 	 
 	 DAOFactory daoFactory;
-	private static final String SQL_INSERT = "INSERT INTO USERS (ID,PASSWORD,ISADMINISTRATOR,NAME) VALUES (?, ?, ?, ?)";
+	private static final String SQL_INSERT = "INSERT INTO USERS (ID,PASSWORD,NOM,TELEPHONE,ISADMINISTRATOR) VALUES (?, ?, ?, ?,?)";
 	 private static final String SQL_SELECT_PAR_EMAIL = "SELECT * FROM USERS WHERE ID = ?";
 	 private static final String SQL_SELECT_CHECK="SELECT * FROM USERS WHERE ID= ? AND PASSWORD =?";
 	 private static final String SQL_DELETE_USER="DELETE FROM USERS WHERE ID=? AND ISADMINISTRATOR<>'true' ";
@@ -42,7 +42,7 @@ public class IUserDaoImpl implements IUserDao {
 	    try {
 	        /* Récupération d'une connexion depuis la Factory */
 	        connexion = daoFactory.getConnection();
-	        preparedStatement = DAOUtilitaire.initialisationRequetePreparee( connexion, SQL_INSERT, true, utilisateur.getId(), utilisateur.getPassword(),utilisateur.isAdministrateur(), utilisateur.getNom() );
+	        preparedStatement = DAOUtilitaire.initialisationRequetePreparee( connexion, SQL_INSERT, true, utilisateur.getId(), utilisateur.getPassword(), utilisateur.getNom(),utilisateur.getTelephone(),utilisateur.isAdministrateur() );
 	        statut = preparedStatement.executeUpdate();
 	        /* Analyse du statut retourné par la requête d'insertion */
 	        if ( statut == 0 ) {

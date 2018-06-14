@@ -31,9 +31,10 @@ public class IUserDaoTest {
 		
 		
 		Utilisateur u=new Utilisateur();
-		u.setId("Alan3");
+		u.setId("Alan322");
 		u.setNom("Alan");
 		u.setPassword("alanalan");
+		u.setTelephone("0311268144");
 		u.setAdministrateur(false);
 		IUserDao utilisateurDao;
 		daoFactory = DAOFactory.getInstance();

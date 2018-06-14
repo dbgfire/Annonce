@@ -49,7 +49,7 @@
               	<td>
        			<input type="button" id="del" value="Supprimé une annonce"  />
        			<input type="button" id="update" value="Modifier une annonce"  />
-       
+       			
             	</td>
                </tr>
           <%
