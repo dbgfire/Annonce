@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import fr.epsi.myEpsi.beans.Annonce;
 import fr.epsi.myEpsi.beans.Utilisateur;
 import fr.epsi.myEpsi.dao.DAOUtilitaire;
 
@@ -12,6 +16,7 @@ public class IUserDaoImpl implements IUserDao {
 	 DAOFactory daoFactory;
 	private static final String SQL_INSERT = "INSERT INTO USERS (ID,PASSWORD,NOM,TELEPHONE,ISADMINISTRATOR) VALUES (?, ?, ?, ?,?)";
 	 private static final String SQL_SELECT_PAR_EMAIL = "SELECT * FROM USERS WHERE ID = ?";
+	 private static final String SQL_SELECT_ALL= "SELECT * FROM USERS";
 	 private static final String SQL_SELECT_CHECK="SELECT * FROM USERS WHERE ID= ? AND PASSWORD =?";
 	 private static final String SQL_DELETE_USER="DELETE FROM USERS WHERE ID=? AND ISADMINISTRATOR<>'true' ";
 	    /*
@@ -138,6 +143,36 @@ public class IUserDaoImpl implements IUserDao {
 	    } finally {
 	        DAOUtilitaire.fermeturesSilencieuses( resultSet, preparedStatement, connexion );
 	    }
+	}
+
+	@Override
+	public List<Utilisateur> allUser() {
+		Connection connexion = null;
+	    PreparedStatement preparedStatement = null;
+	    ResultSet resultSet = null;
+	    List<Utilisateur> u = new ArrayList<Utilisateur>();
+	    Utilisateur utilisateur = null;
+	    
+	    try {
+	        /* Récupération d'une connexion depuis la Factory */
+	        connexion = daoFactory.getConnection();
+	        preparedStatement = DAOUtilitaire.initialisationRequetePreparee( connexion, SQL_SELECT_ALL, false);
+	        resultSet = preparedStatement.executeQuery();
+	        /* Parcours de la ligne de données de l'éventuel ResulSet retourné */
+	   
+
+	       
+	        while( resultSet.next() ) {
+	        	utilisateur = map( resultSet );
+	        	u.add(utilisateur);
+	        }
+	        
+	    } catch ( SQLException e ) {
+	        throw new DAOException( e );
+	    } finally {
+	        DAOUtilitaire.fermeturesSilencieuses( resultSet, preparedStatement, connexion );
+	    }
+	return u;
 	}
 
 }

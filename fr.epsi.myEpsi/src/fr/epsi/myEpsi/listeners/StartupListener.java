@@ -29,6 +29,8 @@ import fr.epsi.myEpsi.dao.DAOFactory;
 public class StartupListener implements ServletContextListener {
 
 	private static final Logger logger = LogManager.getLogger(StartupListener.class);
+	private static final Logger logger2 = LogManager.getLogger(StartupListener.class);
+	private static final Logger logger3 = LogManager.getLogger(StartupListener.class);
     private static final String ATT_DAO_FACTORY = "daofactory";
     private DAOFactory daoFactory;
      
@@ -54,6 +56,7 @@ public class StartupListener implements ServletContextListener {
         /* Instanciation de notre DAOFactory */
 		try {
 			this.daoFactory = DAOFactory.getInstance();
+			logger2.error("Connection BDD");
 		} catch (DAOConfigurationException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -84,7 +87,9 @@ public class StartupListener implements ServletContextListener {
     	} catch (NotCompliantMBeanException e) {
     	    e.printStackTrace();
     	}
-
+    	
+    	logger3.error("Nombre d'annonce "+daoFactory.getAnnonceDao().allPublic().size());
+    	logger3.error("Nombre d'Utilisateur "+daoFactory.getUtilisateurDao().allUser().size());
     	
     }
 	

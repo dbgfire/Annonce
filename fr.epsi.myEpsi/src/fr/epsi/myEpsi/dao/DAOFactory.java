@@ -42,7 +42,7 @@ public class DAOFactory {
         if ( fichierProperties == null ) {
             throw new DAOConfigurationException( "Le fichier properties " + FICHIER_PROPERTIES + " est introuvable." );
         }else {
-        	System.out.println("Ouverture "+FICHIER_PROPERTIES);
+        	//System.out.println("Ouverture "+FICHIER_PROPERTIES);
         }
 
         try {

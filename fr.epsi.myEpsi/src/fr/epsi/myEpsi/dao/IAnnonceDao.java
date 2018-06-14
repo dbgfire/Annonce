@@ -12,6 +12,7 @@ public interface IAnnonceDao {
 	boolean delete(int id);
 	Annonce get(int id);
 	List<Annonce> allPublic(Utilisateur utilisateur);
+	List<Annonce> allPublic();
 	List<Annonce> get(Utilisateur utilisateur);
 
 }

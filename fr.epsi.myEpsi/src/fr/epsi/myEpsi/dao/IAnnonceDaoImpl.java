@@ -19,6 +19,7 @@ public class IAnnonceDaoImpl implements IAnnonceDao {
 	private static final String SQL_DELETE_ANNONCE="DELETE FROM ANNONCES WHERE id=? ";
 	private static final String SQL_SELECT_LIST_ANNONCE = "SELECT * FROM ANNONCES WHERE USER_ID = ?";
 	private static final String SQL_SELECT_LIST_ANNONCE_ALL = "SELECT * FROM ANNONCES WHERE STATUS = ? AND USER_ID != ?";
+	private static final String SQL_SELECT_LIST_ANNONCE_ALL_ALL = "SELECT * FROM ANNONCES ";
 		 /*
 		     * Simple méthode utilitaire permettant de faire la correspondance (le
 		     * mapping) entre une ligne issue de la table des Annonce (un
@@ -189,6 +190,36 @@ public class IAnnonceDaoImpl implements IAnnonceDao {
 	        /* Récupération d'une connexion depuis la Factory */
 	        connexion = daoFactory.getConnection();
 	        preparedStatement = DAOUtilitaire.initialisationRequetePreparee( connexion, SQL_SELECT_LIST_ANNONCE_ALL, false,1,utilisateur.getId() );
+	        resultSet = preparedStatement.executeQuery();
+	        /* Parcours de la ligne de données de l'éventuel ResulSet retourné */
+	   
+
+	       
+	        while( resultSet.next() ) {
+	        	annonce = map( resultSet );
+	        	a.add(annonce);
+	        }
+	        
+	    } catch ( SQLException e ) {
+	        throw new DAOException( e );
+	    } finally {
+	        DAOUtilitaire.fermeturesSilencieuses( resultSet, preparedStatement, connexion );
+	    }
+	return a;
+	}
+
+	@Override
+	public List<Annonce> allPublic() {
+		Connection connexion = null;
+	    PreparedStatement preparedStatement = null;
+	    ResultSet resultSet = null;
+	    List<Annonce> a = new ArrayList<Annonce>();
+	    Annonce annonce = null;
+	    
+	    try {
+	        /* Récupération d'une connexion depuis la Factory */
+	        connexion = daoFactory.getConnection();
+	        preparedStatement = DAOUtilitaire.initialisationRequetePreparee( connexion, SQL_SELECT_LIST_ANNONCE_ALL_ALL, false);
 	        resultSet = preparedStatement.executeQuery();
 	        /* Parcours de la ligne de données de l'éventuel ResulSet retourné */
 	   

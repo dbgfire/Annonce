@@ -26,9 +26,18 @@
 	//List<Annonce> annonce= (Annonce) session.getAttribute(Constantes.PARAM_ANNONCE);
 
 	%>
+	<script>
+	function out(){
+		<%
+		session.setAttribute(Constantes.PARAM_ANNONCE,"a");
+		session.setAttribute(Constantes.PARAM_UTILISATEUR,"u");%>
+		location.href='index.html'
+	}
+	
+	</script>
 	<header>
 		<h1 >Bonjour <%=utilisateur.getNom() %> 	</h1>
-		<input type="button" id="out" value="Se déconnecter"  />
+		<input type="button" id="out" value="Se déconnecter" onclick="out()" />
 	</header>
 	
 	<div id="textWelcome">
@@ -50,8 +59,8 @@
                      <%= attribut.get(i).getPrix() %>
                 </td>
               	<td>
-       			<input type="button" id="del" value="Supprimé une annonce"  />
-       			<input type="button" id="update" value="Modifier une annonce"  />
+
+       			<input type="button" id="update" value="Modifier ou supprimer une annonce "    onclick="javascript:location.href='/fr.epsi.myEpsi/update_annonce?id=<%=attribut.get(i).getId()%>'"/>
        			
             	</td>
                </tr>
