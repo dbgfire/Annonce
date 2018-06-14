@@ -11,6 +11,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>UPDATE</title>
+<link rel="stylesheet" href="stylesheets/style.css">
+<link href="https://fonts.googleapis.com/css?family=Crete+Round|Lato|Lobster" rel="stylesheet">
+<link rel="icon" type="image/png" href="img/favicon.png">
 </head>
 <body>
 <form method="POST" action="ConnectServlet">
@@ -29,8 +32,8 @@
 <label for="status">Status de l'annonce</label><br />
        <select name="status" id="status">
            <option value="1">Public</option>
-           <option value="2">Privé</option>
-           <option value="3">Archivé</option>
+           <option value="2">Privï¿½</option>
+           <option value="3">Archivï¿½</option>
           
        </select>
 <input type="submit" >

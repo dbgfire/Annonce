@@ -13,8 +13,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Swag page</title>
-<link rel="stylesheet" type="text/css" href="style.css">
+<title>Bienvenue</title>
+<link rel="stylesheet" href="stylesheets/style.css">
+<link href="https://fonts.googleapis.com/css?family=Crete+Round|Lato|Lobster" rel="stylesheet">
+<link rel="icon" type="image/png" href="img/favicon.png">
 </head>
 
 <body>
@@ -37,13 +39,13 @@
 	</script>
 	<header>
 		<h1 >Bonjour <%=utilisateur.getNom() %> 	</h1>
-		<input type="button" id="out" value="Se déconnecter" onclick="out()" />
+		<input type="button" id="out" value="Se dï¿½connecter" onclick="out()" />
 	</header>
 	
 	<div id="textWelcome">
 	<p>Bienvenue sur notre site de petites annonces :</p>
 	Vos petites annonces:
-	<input type="button" id="creer" value="Crée"  onclick="javascript:location.href='creer.jsp'"/>
+	<input type="button" id="creer" value="Crï¿½e"  onclick="javascript:location.href='creer.jsp'"/>
 	<br>
 	Nombre de vos annonces: <%=attribut.size() %> Nombre d'annonces public: <%=all.size() %>
 	
