@@ -1,0 +1,262 @@
+body {
+  margin: 0;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.bg {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: -1;
+  background-image: url(../img/background.jpg);
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: brightness(0.7);
+}
+.logo {
+  height: 60vw;
+  line-height: 60vw;
+  width: 60vw;
+  margin: 10% auto;
+  background: #E0D8CF;
+  border-radius: 50%;
+  box-shadow: 0 0 5vw #000000;
+}
+.logo img {
+  width: 90%;
+  vertical-align: middle;
+}
+/* Title and text */
+.title {
+  margin: 0;
+  font-family: 'Lobster', cursive;
+  font-weight: 400;
+  letter-spacing: 0.2rem;
+  text-shadow: 0 0 2rem #000000;
+}
+.sub-title {
+  margin: 5% 0;
+  font-family: 'Crete Round', serif;
+  font-weight: 400;
+  text-shadow: 0 0.1rem 0.5rem #000000;
+}
+.text {
+  font-family: 'Lato', sans-serif;
+}
+.text-light {
+  color: #E0D8CF;
+}
+.text-darker {
+  color: #936037;
+}
+.text-dark {
+  color: #3E280F;
+}
+.text-black {
+  color: #000000;
+}
+.text-center {
+  text-align: center;
+}
+.text-small {
+  font-size: 0.8rem;
+}
+.text-normal {
+  font-size: 1rem;
+}
+.text-larger {
+  font-size: 2rem;
+}
+.text-large {
+  font-size: 3rem;
+}
+.text-upper {
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+}
+/* Buttons and inputs */
+.btn {
+  height: 10vh;
+  width: 50%;
+  margin: 2% 0;
+  background: linear-gradient(to bottom, #936037, #3E280F);
+  border: none;
+  border-radius: 1vh;
+  box-shadow: 0 0.5rem 1rem #000000;
+  outline: none;
+  user-select: none;
+  transition: all 0.2s;
+}
+.btn:hover {
+  box-shadow: 0 0.5rem 1.2rem #000000;
+  transition: all 0.2s;
+}
+.back {
+  position: absolute;
+  bottom: 0vh; right: 2vh;
+  height: 5vh;
+  width: 5vh;
+  margin: 2% 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+.back img {
+  width: 100%;
+}
+#btn-lag {
+  display: none;
+}
+/* Forms */
+#in-form,
+#up-form {
+  position: absolute;
+  top: 50%; left: 50%;
+  z-index: -2;
+  height: 90%;
+  width: 90%;
+  padding-top: 10%;
+  background: #E0D8CF;
+  border-radius: 2vh;
+  transform: translate(-50%, -25%);
+  opacity: 0;
+  transition: all 0.2s;
+}
+#in-form p,
+#up-form p {
+  width: 95%;
+  margin: 7% auto;
+}
+input {
+  height: 5vh;
+  width: 60%;
+  margin: 2%;
+  border: none;
+  border-radius: 1.5vh;
+  outline: none;
+  transition: all 0.2s;
+}
+input:active,
+input:focus {
+  box-shadow: 0 0 0.2rem 0.1rem #936037;
+  transition: all 0.2s;
+}
+#form-lag {
+  display: block;
+}
+/* Media queries */
+@media (orientation: landscape) {
+  .logo {
+    height: 20vw;
+    line-height: 20vw;
+    width: 20vw;
+    margin: 5% auto 2%;
+  }
+  .text-larger {
+    margin: 2% 0;
+    font-size: 1.5rem;
+  }
+  .text-large {
+    font-size: 2rem;
+  }
+  .btn {
+    width: 30%;
+    margin: 2%;
+  }
+  #in-form,
+  #up-form {
+    padding-top: 2%;
+  }
+  #in-form p,
+  #up-form p {
+    width: 95%;
+    margin: 2% auto 5%;
+  }
+  .row {
+    width: 50%;
+    float: left;
+  }
+  .back {
+    right: 5vh;
+    height: 10vh;
+    width: 10vh;
+  }
+  #form-lag {
+    display: none;
+  }
+}
+@media (orientation: landscape) and (min-width: 896px) {
+  .text-larger {
+    font-size: 2rem;
+  }
+  .text-large {
+    font-size: 3rem;
+  }
+  .logo {
+    margin: 10% auto 7%;
+  }
+  #in-form,
+  #up-form {
+    padding-top: 7%;
+    box-sizing: border-box;
+  }
+  input {
+    margin: 5%;
+  }
+}
+@media (orientation: landscape) and (min-width: 1440px) {
+  .logo {
+    margin: 5% auto 2%;
+  }
+  #in-form,
+  #up-form {
+    padding-top: 2%;
+    box-sizing: border-box;
+  }
+  #in-form input {
+    margin: 2%;
+  }
+}
+@media (orientation: portrait) and (min-width: 426px) {
+  .logo {
+    height: 30vw;
+    line-height: 30vw;
+    width: 30vw;
+  }
+  .btn {
+    width: 30%;
+  }
+  #btn-lag {
+    display: block;
+  }
+}
+@media (orientation: portrait) and (min-width: 896px) {
+  .text-larger {
+    font-size: 3rem;
+  }
+  .text-large {
+    font-size: 4rem;
+  }
+  .logo {
+    margin: 20% auto 7%;
+  }
+  .btn {
+    margin: 5%;
+  }
+  #btn-lag {
+    display: none;
+  }
+}
+
+
+/* Fonts
+font-family: 'Lobster', cursive;
+font-family: 'Lato', sans-serif;
+font-family: 'Crete Round', serif;
+*/
+/* Colors
+E0D8CF light
+936037 darker
+3E280F dark
+*/
