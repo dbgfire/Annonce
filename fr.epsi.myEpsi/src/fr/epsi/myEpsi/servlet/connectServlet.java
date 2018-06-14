@@ -48,7 +48,7 @@ public class connectServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("email");
-		String pwd = request.getParameter("motdepasse");
+		String pwd = request.getParameter("passwd");
 
 		
 		Utilisateur utilisateur =new Utilisateur() ;

@@ -20,7 +20,7 @@
 	<% Utilisateur utilisateur = (Utilisateur) session.getAttribute(Constantes.PARAM_UTILISATEUR); 
 	List<Annonce> attribut = (List<Annonce>)session.getAttribute(Constantes.PARAM_ANNONCE);  
 	List<Annonce> all = (List<Annonce>)session.getAttribute(Constantes.PARAM_ANNONCE_ALL); 
-	System.out.println(all.get(0).getTitre()+" "+attribut.get(0).getTitre());
+	//System.out.println(all.get(0).getTitre()+" "+attribut.get(0).getTitre());
 	//Annonce a =(Annonce)session.getAttribute(Constantes.PARAM_ANNONCE);
 	//List<Annonce> annonce= (Annonce) session.getAttribute(Constantes.PARAM_ANNONCE);
 
